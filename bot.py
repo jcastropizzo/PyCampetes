@@ -4,6 +4,7 @@ from config import TOKEN
 from base import start_handler, echo_handler
 from ejemplo import ejemplo_handler
 from db.models import migrate, Product, ShoppingCart, ShoppingCartEntry
+from commands.setup import setup_commands
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -22,9 +23,11 @@ if __name__ == '__main__':
     random_shopping_cart_entry = ShoppingCartEntry(cart=random_cart,product=random_product,quantity=1)
     random_shopping_cart_entry.save()
 
-    print(Product.select().get().name)
-    print(ShoppingCart.select().get())
-    print(ShoppingCartEntry.select().get())
+    # print(Product.select().get().name)
+    # print(ShoppingCart.select().get())
+    # print(ShoppingCartEntry.select().get())
+
+    setup_commands(application)
     application.add_handler(start_handler)
     application.add_handler(echo_handler)
     application.add_handler(ejemplo_handler)

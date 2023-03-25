@@ -8,8 +8,11 @@ class Product(Model):
     name = CharField()
     price = IntegerField()
 
+    def __str__(self):
+        return f'{self.name}: {self.price} morlacos'
+
     class Meta:
-        database = db # This model uses the "people.db" database.
+        database = db
         table_name = 'products'
 
 
@@ -18,7 +21,7 @@ class ShoppingCart(Model):
     cart_holder = CharField()
 
     class Meta:
-        database = db # This model uses the "people.db" database.
+        database = db
         table_name = 'shopping_carts'
 
 
@@ -29,7 +32,7 @@ class ShoppingCartEntry(Model):
     quantity = IntegerField()
 
     class Meta:
-        database = db # This model uses the "people.db" database.
+        database = db
         table_name = 'shopping_carts_x_products'
 
 def migrate():
